@@ -1,0 +1,191 @@
+.container {
+  background-color: #fff;
+  flex-direction: column;
+  width: 100%;
+  max-width: 398px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+@media (width<=640px) {
+  .container {
+    max-width: 100%;
+  }
+}
+.headerContainer {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.heroImage {
+  object-fit: cover;
+  width: 100%;
+  height: 158px;
+}
+.contentContainer {
+  padding: 0 32px;
+}
+@media (width<=640px) {
+  .contentContainer {
+    padding: 0 16px;
+  }
+}
+.eventsContainer {
+  margin-bottom: 20px;
+}
+.sectionHeader {
+  margin-top: 32px;
+  margin-bottom: 15px;
+}
+.sectionTitle {
+  color: #000;
+  margin-bottom: 4px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+}
+.dateRange {
+  color: #000;
+  margin-bottom: 9px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+}
+.divider {
+  background-color: #000;
+  height: 1px;
+  margin: 10px 0;
+}
+.eventItem {
+  align-items: flex-start;
+  margin-bottom: 15px;
+  display: flex;
+}
+.eventDate {
+  color: #fff;
+  background-color: #65558f;
+  border-radius: 100px;
+  width: 77px;
+  height: 37px;
+  font-family: PoetsenOne, sans-serif;
+  font-size: 25px;
+  box-shadow: 0 2px 4px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (width<=640px) {
+  .eventDate {
+    width: 65px;
+    height: 32px;
+    font-size: 20px;
+  }
+}
+.eventDetails {
+  margin-left: 10px;
+}
+@media (width<=640px) {
+  .eventDetails {
+    margin-left: 8px;
+  }
+}
+.eventTitle {
+  color: #000;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+.regularText {
+  font-weight: 400;
+}
+.eventLocation {
+  color: #000;
+  margin: 3px 0;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+}
+.eventLink {
+  color: #008cff;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  cursor: pointer;
+}
+.favoritesContainer {
+  margin-bottom: 20px;
+}
+.favoritesHeader {
+  margin-bottom: 15px;
+}
+.bishopsContainer {
+  margin-bottom: 60px;
+  position: relative;
+}
+.bishopsTitle {
+  color: #000;
+  margin-bottom: 15px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+}
+.bishopsMessage {
+  color: #000;
+  padding: 20px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  position: relative;
+}
+@media (width<=640px) {
+  .bishopsMessage {
+    padding: 15px;
+  }
+}
+.navigationBar {
+  background-color: #fef7ff;
+  border-top: 1px solid #cac4d0;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 398px;
+  height: 64px;
+  padding: 8px 0;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+}
+@media (width<=640px) {
+  .navigationBar {
+    max-width: 100%;
+    height: 56px;
+  }
+}
+.navGroup {
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4px;
+  display: flex;
+}
+.navItem {
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  max-width: 80px;
+  display: flex;
+}
+.navLabelActive {
+  color: #65558f;
+  margin-top: 4px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+@media (width<=640px) {
+  .navLabelActive {
+    font-size: 12px;
+  }
+}
+.navLabel {
+  color: #49454f;
+  margin-top: 4px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
