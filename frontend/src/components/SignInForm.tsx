@@ -37,7 +37,7 @@ const SignInForm: React.FC = () => {
             <br></br>
             <button
               type="submit"
-              className="p-2 text-base leading-4 bg-cyan-700 cursor-pointer border-[none] text-neutral-100 w-[70px]"
+              className="p-2 text-base leading-4 bg-blue-600 cursor-pointer border-[none] text-neutral-100 w-[70px]"
               aria-label="Continue to next step"
             >
               Next
