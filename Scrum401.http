@@ -1,0 +1,6 @@
+@Scrum401_HostAddress = http://localhost:5293
+
+GET {{Scrum401_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
