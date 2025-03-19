@@ -49,6 +49,9 @@ const ActivityItem: React.FC<ActivityItemProps> = ({
         </div>
         <button className={styles.button}>RSVP</button>
       </div>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
