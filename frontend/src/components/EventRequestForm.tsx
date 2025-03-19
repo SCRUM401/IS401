@@ -103,6 +103,8 @@ const EventRequestForm: React.FC<EventRequestFormProps> = ({
       <button type="submit" className={styles.submitButton}>
         Submit Request
       </button>
+      <br />
+      <br />
     </form>
   );
 };
