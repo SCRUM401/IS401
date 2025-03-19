@@ -1,16 +1,14 @@
-
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css'
-import Calendar from "./pages/Calendar"
-import EventForm from "./pages/EventForm"
-import EventList from "./pages/EventList"
-import Home from "./pages/Home"
-import NoPage404 from "./pages/NoPage404"
-import Layout from "./pages/Layout"
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Calendar from './pages/Calendar';
+import EventForm from './pages/EventForm';
+import EventList from './pages/EventList';
+import Home from './pages/Home';
+import NoPage404 from './pages/NoPage404';
+import Layout from './pages/Layout';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
@@ -26,4 +24,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
