@@ -1,7 +1,9 @@
-import InputDesign from '../components/InputDesign';
-
 function Home() {
-  return <InputDesign />;
+  return (
+    <>
+      <h1>I am testing the home sheeeeeee</h1>
+    </>
+  );
 }
 
 export default Home;
