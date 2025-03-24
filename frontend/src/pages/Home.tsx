@@ -1,8 +1,7 @@
-function Home () {
-    return (
+import InputDesign from '../components/InputDesign';
 
-    );
-
+function Home() {
+  return <InputDesign />;
 }
 
-export default Home
+export default Home;
