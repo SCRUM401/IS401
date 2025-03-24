@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './InputDesign.module.css';
-import EventItem from './EventItem';
+import EventItem from './HomeEventItem';
 
 interface Event {
   date: string;
@@ -27,7 +27,7 @@ interface EventSectionProps {
   };
 }
 
-const EventSection: React.FC<EventSectionProps> = ({
+const HomeEventSection: React.FC<EventSectionProps> = ({
   title,
   dateRange,
   events,
@@ -62,4 +62,4 @@ const EventSection: React.FC<EventSectionProps> = ({
   );
 };
 
-export default EventSection;
+export default HomeEventSection;

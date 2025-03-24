@@ -16,7 +16,7 @@ interface EventItemProps {
   };
 }
 
-const EventItem: React.FC<EventItemProps> = ({
+const HomeEventItem: React.FC<EventItemProps> = ({
   date,
   title,
   time,
@@ -40,4 +40,4 @@ const EventItem: React.FC<EventItemProps> = ({
   );
 };
 
-export default EventItem;
+export default HomeEventItem;

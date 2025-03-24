@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, FormEvent } from 'react';
-import styles from './InputDesign.module.css';
+import styles from './HomeInputDesign.module.css';
 import EventRequestForm from '../EventRequestForm';
-import BottomNavigation from './BottomNavigation';
 
 function HomeDesign() {
   const [formData, setFormData] = useState({
@@ -53,8 +52,6 @@ function HomeDesign() {
           handleSubmit={handleSubmit}
         />
       </main>
-
-      <BottomNavigation />
     </div>
   );
 }

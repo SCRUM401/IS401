@@ -5,7 +5,7 @@ interface HeaderProps {
   logoSrc: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ logoSrc }) => {
+const HomeHeader: React.FC<HeaderProps> = ({ logoSrc }) => {
   return (
     <header className={styles.div2}>
       <img src={logoSrc} alt="Logo" className={styles.logo} />
@@ -30,4 +30,4 @@ const Header: React.FC<HeaderProps> = ({ logoSrc }) => {
   );
 };
 
-export default Header;
+export default HomeHeader;
