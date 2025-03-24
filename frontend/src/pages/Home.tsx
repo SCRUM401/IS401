@@ -1,9 +1,9 @@
-import InputDesign from '../components/InputDesign';
+import HomeDesign from '../components/homePage/HomeDesign';
 
 function Home() {
   return (
     <>
-      <InputDesign />
+      <HomeDesign />
     </>
   );
 }
