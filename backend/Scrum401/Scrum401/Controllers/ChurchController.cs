@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using YSAProject.API.Data; // Ensure the correct namespace for YsaContext
+using Scrum401.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YSAProject.API.Controllers
+namespace Scrum401.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,21 +17,11 @@ namespace YSAProject.API.Controllers
             _YSAContext = context;
         }
 
-        [HttpGet("AllProjects")]
-        public ActionResult<IEnumerable<Project>> GetProjects()
+        [HttpGet("Events")]
+        public ActionResult<IEnumerable<Event>> GetProjects()
         {
-            var projects = _YSAContext.Projects.ToList(); // Assuming Projects is the correct entity
-            return Ok(projects);
-        }
-
-        [HttpGet("FunctionalProjects")]
-        public ActionResult<IEnumerable<Project>> GetFunctionalProjects()
-        { 
-            var functionalProjects = _YSAContext.Projects
-                .Where(p => p.Classification == "Functional")
-                .ToList();
-
-            return Ok(functionalProjects);
+            var events = _YSAContext.Events.ToList();
+            return Ok(events);
         }
     }
 }
