@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Calendar from './pages/Calendar';
@@ -7,6 +7,8 @@ import EventList from './pages/EventList';
 import Home from './pages/Home';
 import NoPage404 from './pages/NoPage404';
 import Layout from './pages/Layout';
+import Login1 from './pages/Login1';
+import Login2 from './pages/Login2';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="eventform" element={<EventForm />} />
           <Route path="eventlist" element={<EventList />} />
           <Route path="*" element={<NoPage404 />} />
+          <Route path="Login" element={<Login1 />}></Route>
+          <Route path="Login2" element={<Login2 />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
