@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './InputDesign.module.css';
+import styles from './HomeInputDesign.module.css';
+
 import EventItem from './HomeEventItem';
 
 interface Event {
