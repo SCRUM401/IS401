@@ -1,55 +1,53 @@
 'use client';
-import React, { useState, FormEvent } from 'react';
+import React from 'react';
 import styles from './HomeInputDesign.module.css';
-import EventRequestForm from '../EventRequestForm';
+
+import HomeHeader from './HomeHeader';
+import HomeEventSection from './HomeEventSection';
+import BishopThought from './BishopThought';
 
 function HomeDesign() {
-  const [formData, setFormData] = useState({
-    eventName: '',
-    eventType: '',
-    eventDescription: '',
-    address: '',
-    date: '',
-    groupsInvolved: '',
-    helpOrganize: false,
-  });
+  const upcomingEvents = [
+    {
+      date: 'Mar 28',
+      title: 'Game Night',
+      time: '7:00 PM',
+      location: 'Institute Building',
+    },
+    {
+      date: 'Mar 30',
+      title: 'Sunday Dinner',
+      time: '5:00 PM',
+      location: 'Bishop’s House',
+    },
+  ];
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      helpOrganize: e.target.checked,
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Here you would typically send the data to an API
+  const styleClasses = {
+    sectionHeader: styles.pageTitle,
+    sectionTitle: styles.pageTitle,
+    dateRange: '',
+    divider: styles.divider || '',
+    eventContainer: styles.formGroup,
+    dateContainer: styles.fieldLabel,
+    contentContainer: styles.formGroup,
+    titleClass: styles.fieldLabel,
+    locationClass: styles.fieldLabel,
+    detailsClass: styles.submitButton,
   };
 
   return (
     <div className={styles.container}>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;500&display=swap"
-        rel="stylesheet"
-      />
-
       <main className={styles.content}>
-        <EventRequestForm
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleCheckboxChange={handleCheckboxChange}
-          handleSubmit={handleSubmit}
+        <HomeHeader logoSrc="/logo.png" />
+        <HomeEventSection
+          title="Upcoming Events"
+          events={upcomingEvents}
+          styleClasses={styleClasses}
+        />
+        <BishopThought
+          message="As we gather and lift each other, the Spirit will always be present. – Bishop"
+          quoteLeftSrc={''}
+          quoteRightSrc={''}
         />
       </main>
     </div>
