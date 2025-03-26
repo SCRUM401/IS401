@@ -1,10 +1,11 @@
-function EventForm () {
-    return (
-        <>
-        <h1>I am testing the form sheeeeeee</h1>
-        </>
-    );
+import InputDesign from '../components/InputDesign';
 
+function EventForm() {
+  return (
+    <>
+      <InputDesign />
+    </>
+  );
 }
 
-export default EventForm
+export default EventForm;

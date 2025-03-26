@@ -1,11 +1,7 @@
 import HomeDesign from '../components/homePage/HomeDesign';
 
 function Home() {
-  return (
-    <>
-      <HomeDesign />
-    </>
-  );
+  return <HomeDesign />;
 }
 
 export default Home;
