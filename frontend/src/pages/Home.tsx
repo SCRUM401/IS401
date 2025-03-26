@@ -1,9 +1,7 @@
+import HomeDesign from '../components/homePage/HomeDesign';
+
 function Home() {
-  return (
-    <>
-      <h1>I am testing the home sheeeeeee</h1>
-    </>
-  );
+  return <HomeDesign />;
 }
 
 export default Home;
