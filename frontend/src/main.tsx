@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import InputDesign from './components/InputDesign.tsx';
+import EventList from './components/EventList.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <InputDesign />
+    <EventList />
   </StrictMode>
 );

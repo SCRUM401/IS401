@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import styles from './InputDesign.module.css';
+import styles from './EventList.module.css';
 
 interface NavItem {
   name: string;

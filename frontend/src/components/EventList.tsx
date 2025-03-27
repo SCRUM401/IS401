@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import styles from './InputDesign.module.css';
+import styles from './EventList.module.css';
 import EventsHeader from './EventsHeader';
 import ActivityItem from './ActivityItem';
 import BottomNavigation from './BottomNavigation';
@@ -13,7 +13,7 @@ interface Event {
   Year: number;
 }
 
-const InputDesign: React.FC = () => {
+const EventList: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [rsvpedEvents, setRsvpedEvents] = useState<Event[]>([]);  // RSVP'd events
 
@@ -127,4 +127,4 @@ const InputDesign: React.FC = () => {
   );
 };
 
-export default InputDesign;
+export default EventList;
