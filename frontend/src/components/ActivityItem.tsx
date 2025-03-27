@@ -2,43 +2,54 @@
 import React from 'react';
 import styles from './InputDesign.module.css';
 
-interface ActivityItemProps {
-  activityName: string;
-  isActive?: boolean;
+interface Event {
+  EventID: number;
+  EventName: string;
+  Month: number;
+  Day: number;
+  Year: number;
 }
 
-const ActivityItem: React.FC<ActivityItemProps> = ({
-  activityName,
-  isActive = false,
-}) => {
-  // Determine which styles to use based on whether the item is active
-  const containerStyle = styles.div5;
-  const labelStyle = styles.div6;
-  const inputStyle = isActive ? styles.div7 : styles.div11;
-  const actionContainerStyle = styles.div8;
+interface ActivityItemProps {
+  event: Event;
+  handleRSVP: (eventId: number) => void;
+  handleCancel: (eventId: number) => void;
+  rsvped: boolean;
+}
 
+const ActivityItem: React.FC<ActivityItemProps> = ({ event, handleRSVP, handleCancel, rsvped }) => {
   return (
-    <div className={containerStyle}>
-      <label className={labelStyle} htmlFor={`activity-${activityName}`}>
+    <div key={event.EventID} className={styles.div5}>
+      <label className={styles.div6} htmlFor={`activity-${event.EventID}`}>
         Activity Name
       </label>
       <input
         type="text"
-        id={`activity-${activityName}`}
-        className={inputStyle}
-        value={activityName}
+        id={`activity-${event.EventID}`}
+        className={styles.div7}
+        value={event.EventName}
         readOnly
-        placeholder="Activity Name"
       />
-      <div className={actionContainerStyle}>
-        <div aria-hidden="true">
-          
-        </div>
-        <button className={styles.button}>RSVP</button>
+      <div className={styles.div8}>
+        {rsvped ? (
+          // Show cancel button for RSVP'd events
+          <button
+            className={styles.button}
+            onClick={() => handleCancel(event.EventID)}
+          >
+            Cancel
+          </button>
+        ) : (
+          // Show RSVP button for events that are not RSVP'd yet
+          <button
+            className={`${styles.button} ${rsvped ? styles.disabledButton : ''}`}
+            onClick={() => handleRSVP(event.EventID)}
+            disabled={rsvped}
+          >
+            RSVP
+          </button>
+        )}
       </div>
-      <br />
-      <br />
-      <br />
     </div>
   );
 };

@@ -1,3 +1,14 @@
+
+
+.rsvpEvent {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #b2ebf2;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+
 .div {
   background-color: #fff;
   width: 393px;
@@ -36,11 +47,15 @@
   gap: 10px;
   padding: 0 10px;
   display: flex;
+  padding-bottom: 60px; /* Add some space at the bottom */
 }
 .div5 {
-  flex-direction: column;
-  margin-bottom: 20px;
   display: flex;
+  align-items: center; /* Ensures vertical alignment */
+  justify-content: space-between; /* Ensures proper spacing */
+  gap: 10px; /* Adds spacing between text box and buttons */
+  padding: 10px;
+  width: 100%;
 }
 .div6 {
   color: #000;
@@ -68,11 +83,9 @@
   }
 }
 .div8 {
-  align-items: center;
-  margin-top: 28px;
   display: flex;
-  position: absolute;
-  right: 20px;
+  align-items: center; /* Centers the button vertically */
+  justify-content: center;
 }
 @media (width<=640px) {
   .div8 {
