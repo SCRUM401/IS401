@@ -1,112 +1,225 @@
 'use client';
-import React, { FormEvent } from 'react';
-import styles from './InputDesign.module.css';
-import FormField from './FormField';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
+
+const eventTypes = [
+  { id: 1, name: 'Service' },
+  { id: 2, name: 'Social' },
+  { id: 3, name: 'Spiritual' },
+];
 
 interface FormData {
   eventName: string;
-  eventType: string;
-  eventDescription: string;
+  typeID: string;
+  description: string;
   address: string;
   date: string;
-  groupsInvolved: string;
   helpOrganize: boolean;
 }
 
-interface EventRequestFormProps {
-  formData: FormData;
-  handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: FormEvent) => void;
-}
+const EventRequestForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    eventName: '',
+    typeID: '',
+    description: '',
+    address: '',
+    date: '',
+    helpOrganize: false,
+  });
 
-const EventRequestForm: React.FC<EventRequestFormProps> = ({
-  formData,
-  handleInputChange,
-  handleCheckboxChange,
-  handleSubmit,
-}) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log('Submitted Data:', formData);
+    alert('Your event request was successfully submitted!');
+    setFormData({
+      eventName: '',
+      typeID: '',
+      description: '',
+      address: '',
+      date: '',
+      helpOrganize: false,
+    });
+  };
+
   return (
-    <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <h1 className={styles.pageTitle}>Event Request Page</h1>
+    <div
+      style={{
+        maxWidth: '100%',
+        minHeight: '100vh',
+        backgroundColor: '#f9f9ff',
+        padding: '1rem',
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: '#fff',
+          borderRadius: '1.25rem',
+          padding: '1.5rem',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.2rem',
+          maxWidth: '500px',
+          margin: '0 auto',
+        }}
+      >
+        <h1 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: '700', color: '#222' }}>
+          📅 Submit an Event Request
+        </h1>
 
-      <FormField
-        label="Event Name"
-        name="eventName"
-        value={formData.eventName}
-        placeholder="Activity Name"
-        onChange={handleInputChange}
-      />
+        <p style={{ textAlign: 'center', fontSize: '0.95rem', color: '#666' }}>
+          Fill out the details below to request approval for a new event.
+        </p>
 
-      <FormField
-        label="Event Type"
-        name="eventType"
-        value={formData.eventType}
-        placeholder="Activity Type"
-        onChange={handleInputChange}
-      />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+          <label htmlFor="eventName" style={labelStyle}>
+            Event Name *
+          </label>
+          <input
+            type="text"
+            name="eventName"
+            id="eventName"
+            value={formData.eventName}
+            onChange={handleInputChange}
+            placeholder="e.g. Community Cleanup"
+            style={inputStyle}
+            required
+          />
+        </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="eventDescription" className={styles.fieldLabel}>
-          Event Description
-        </label>
-        <textarea
-          id="eventDescription"
-          name="eventDescription"
-          value={formData.eventDescription}
-          placeholder="Activity Description"
-          className={styles.textarea}
-          onChange={handleInputChange}
-        />
-      </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+          <label htmlFor="typeID" style={labelStyle}>
+            Event Type *
+          </label>
+          <select
+            id="typeID"
+            name="typeID"
+            value={formData.typeID}
+            onChange={handleInputChange}
+            style={inputStyle}
+            required
+          >
+            <option value="">Select a type</option>
+            {eventTypes.map((et) => (
+              <option key={et.id} value={et.id}>
+                {et.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <FormField
-        label="Address"
-        name="address"
-        value={formData.address}
-        placeholder="Address"
-        onChange={handleInputChange}
-      />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+          <label htmlFor="description" style={labelStyle}>
+            Event Description *
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            placeholder="What will this event be like?"
+            style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }}
+            required
+          />
+        </div>
 
-      <FormField
-        label="Date"
-        name="date"
-        value={formData.date}
-        placeholder="Date"
-        onChange={handleInputChange}
-      />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+          <label htmlFor="address" style={labelStyle}>
+            Location (Address) *
+          </label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            value={formData.address}
+            onChange={handleInputChange}
+            placeholder="123 Main St, Provo, UT"
+            style={inputStyle}
+            required
+          />
+        </div>
 
-      <FormField
-        label="Groups Involved"
-        name="groupsInvolved"
-        value={formData.groupsInvolved}
-        placeholder="Groups Involved"
-        onChange={handleInputChange}
-      />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+          <label htmlFor="date" style={labelStyle}>
+            Date & Time *
+          </label>
+          <input
+            type="datetime-local"
+            name="date"
+            id="date"
+            value={formData.date}
+            onChange={handleInputChange}
+            style={inputStyle}
+            required
+          />
+        </div>
 
-      <div className={styles.checkboxContainer}>
-        <input
-          type="checkbox"
-          id="helpOrganize"
-          name="helpOrganize"
-          checked={formData.helpOrganize}
-          onChange={handleCheckboxChange}
-          className={styles.checkbox}
-        />
-        <label htmlFor="helpOrganize">
-          Would you like to help organize this event?
-        </label>
-      </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
+          <input
+            type="checkbox"
+            id="helpOrganize"
+            name="helpOrganize"
+            checked={formData.helpOrganize}
+            onChange={handleCheckboxChange}
+            style={{ width: '18px', height: '18px', accentColor: '#007aff' }}
+          />
+          <label htmlFor="helpOrganize">I’d like to help organize this event</label>
+        </div>
 
-      <button type="submit" className={styles.submitButton}>
-        Submit Request
-      </button>
-      <br />
-      <br />
-    </form>
+        <button type="submit" style={buttonStyle}>
+          Submit Request
+        </button>
+      </form>
+    </div>
   );
+};
+
+const labelStyle = {
+  fontWeight: 600,
+  fontSize: '0.95rem',
+  color: '#333',
+};
+
+const inputStyle = {
+  fontSize: '1rem',
+  padding: '0.75rem 1rem',
+  border: '1px solid #ccc',
+  borderRadius: '0.75rem',
+  backgroundColor: '#fafafa',
+  transition: 'border-color 0.2s',
+};
+
+const buttonStyle = {
+  width: '100%',
+  backgroundColor: '#007aff',
+  color: '#fff',
+  padding: '0.9rem',
+  fontSize: '1.05rem',
+  fontWeight: 600,
+  border: 'none',
+  borderRadius: '0.85rem',
+  cursor: 'pointer',
+  transition: 'background-color 0.2s',
 };
 
 export default EventRequestForm;
