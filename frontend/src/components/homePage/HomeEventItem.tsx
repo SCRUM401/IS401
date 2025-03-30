@@ -28,7 +28,7 @@ const HomeEventItem: React.FC<EventItemProps> = ({
       <div className={styleClasses.dateContainer}>{date}</div>
       <div className={styleClasses.contentContainer}>
         <h3 className={styleClasses.titleClass}>
-          <span>{title}-</span>
+          <span>{title} - </span>
           <span className={styles.span}>{time}</span>
         </h3>
         <p className={styleClasses.locationClass}>{location}</p>
