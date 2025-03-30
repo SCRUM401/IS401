@@ -238,7 +238,7 @@ const inputStyle = {
 
 const buttonStyle = {
   width: '100%',
-  backgroundColor: '#007aff',
+  backgroundColor: '#6947a3',
   color: '#fff',
   padding: '0.9rem',
   fontSize: '1.05rem',
