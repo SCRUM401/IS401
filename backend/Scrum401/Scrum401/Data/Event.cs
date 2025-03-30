@@ -47,5 +47,6 @@ public enum EventStatusEnum
 {
     Approved,
     Declined,
-    Pending
+    Pending,
+    Scheduled
 }
