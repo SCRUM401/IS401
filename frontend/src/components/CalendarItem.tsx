@@ -5,10 +5,10 @@ import dayjs from 'dayjs';
 import '../CSS/Calendar.css';
 
 interface Event {
-  id: number;
-  title: string;
-  time: string;
-  location: string;
+  eventID: number;
+  eventName: string;
+  beginTime: string;
+  address: string;
   description?: string;
 }
 
@@ -24,27 +24,15 @@ const CalendarView: React.FC = () => {
   const fetchEventsForDate = async (selectedDate: Date) => {
     // Replace with API call to fetch events for the selected date
     const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
-    console.log(`Fetching events for: ${formattedDate}`);
+    const fetchEvents = async () => {
+      console.log(`Fetching events for: ${formattedDate}`);
 
-    // Mock data for now
-    const mockEvents: Event[] = [
-      {
-        id: 1,
-        title: 'Linger-longer',
-        time: '1:00 PM',
-        location: 'Stake Center Pavillion',
-        description: 'Bring a dish to share!',
-      },
-      {
-        id: 2,
-        title: 'RS Volleyball Tournament',
-        time: '2:00 PM',
-        location: 'Stake Center Gym',
-        description: 'Join us for a fun tournament!',
-      },
-    ];
-
-    setEvents(mockEvents);
+      const url = 'https://localhost:5000/api/Church/Events';
+      const response = await fetch(url);
+      const data = await response.json();
+      setEvents(data);
+    };
+    fetchEvents();
   };
 
   const toggleCalendarVisibility = () => {
@@ -62,7 +50,7 @@ const CalendarView: React.FC = () => {
       {isCalendarVisible && (
         <div className="calendar-wrapper">
           <Calendar
-            onChange={setDate}
+            onChange={(value) => setDate(value as Date)}
             value={date}
             tileClassName={({ date, view }) =>
               view === 'month' && events.length > 0 ? 'has-events' : ''
@@ -78,12 +66,13 @@ const CalendarView: React.FC = () => {
         {events.length > 0 ? (
           <div className="events-list">
             {events.map((event) => (
-              <div key={event.id} className="event-card">
+              <div key={event.eventID} className="event-card">
                 <div className="event-date">{dayjs(date).format('M/D')}</div>
                 <div className="event-title">
-                  {event.title} - {event.time}
+                  {event.eventName} -{' '}
+                  {new Date(event.beginTime).toLocaleTimeString()}
                 </div>
-                <div className="event-location">{event.location}</div>
+                <div className="event-location">{event.address}</div>
                 {event.description && (
                   <div className="event-description">{event.description}</div>
                 )}
