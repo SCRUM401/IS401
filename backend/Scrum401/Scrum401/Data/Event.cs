@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Scrum401.Data;
 public class Event
@@ -17,6 +18,7 @@ public class Event
 
     [ForeignKey("EventType")]
     public int TypeID { get; set; }
+   [ValidateNever]
     public EventType EventType { get; set; }  // Navigation Property
 
     public int Month { get; set; }
@@ -24,21 +26,24 @@ public class Event
     public int Year { get; set; }
 
     public DateTime BeginTime { get; set; }
+    [ValidateNever]
     public DateTime EndTime { get; set; }
 
     public string Address { get; set; }
-    public string City { get; set; }
-    public string State { get; set; }
-    public string Zip { get; set; }
+    public string City { get; set; } = "";
+    public string State { get; set; } = "";
+    public string Zip { get; set; } = "";
 
     [ForeignKey("Requestor")]
+    
     public int RequestorID { get; set; }
+    [ValidateNever]
     public User Requestor { get; set; } // Navigation Property
 
     public bool RequestorHelp { get; set; }
 
     public EventStatusEnum EventStatus { get; set; }
-
+    [ValidateNever]
     public ICollection<RSVP> RSVPs { get; set; } // One-to-Many Relationship
 }
 
