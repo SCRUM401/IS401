@@ -15,12 +15,12 @@ const BishopThought: React.FC<BishopThoughtProps> = ({
   return (
     <section className={styles.div36}>
       <h2 className={styles.div37}>Bishop's Thought</h2>
-      <img src={quoteLeftSrc} alt="Quote symbol" className={styles.quoteLeft} />
+      <img src={quoteLeftSrc} alt="Quote symbol" className={styles.quoteIcon} />
       <blockquote className={styles.div38}>{message}</blockquote>
       <img
         src={quoteRightSrc}
         alt="Quote symbol"
-        className={styles.quoteRight}
+        className={styles.quoteIcon}
       />
     </section>
   );
