@@ -4,15 +4,13 @@ import BottomNavigation from '../components/BottomNavigation';
 
 const Layout: React.FC = () => {
   const location = useLocation();
+  const showNav = location.pathname !== '/Login' && location.pathname !== '/Login2';
 
   return (
-    <>
+    <div style={{ paddingBottom: showNav ? '65px' : '0px' }}>
       <Outlet />
-      {/* Hide BottomNavigation on the Login page */}
-      {location.pathname !== '/Login' && location.pathname !== '/Login2' && (
-        <BottomNavigation />
-      )}
-    </>
+      {showNav && <BottomNavigation />}
+    </div>
   );
 };
 
