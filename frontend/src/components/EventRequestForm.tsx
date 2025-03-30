@@ -1,6 +1,8 @@
 'use client';
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 
+const toISO = (value: string) => new Date(value).toISOString();
+
 const eventTypes = [
   { id: 1, name: 'Service' },
   { id: 2, name: 'Social' },
@@ -44,18 +46,42 @@ const EventRequestForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Submitted Data:', formData);
-    alert('Your event request was successfully submitted!');
-    setFormData({
-      eventName: '',
-      typeID: '',
-      description: '',
-      address: '',
-      date: '',
-      helpOrganize: false,
-    });
+  
+    const payload = {
+      eventName: formData.eventName,
+      typeID: parseInt(formData.typeID),
+      description: formData.description,
+      address: formData.address,
+      beginTime: toISO(formData.date),
+      requestorHelp: formData.helpOrganize,
+    };
+  
+    try {
+      const response = await fetch('https://localhost:5000/api/Church/Events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+  
+      if (response.ok) {
+        alert('Your event request was successfully submitted!');
+        setFormData({
+          eventName: '',
+          typeID: '',
+          description: '',
+          address: '',
+          date: '',
+          helpOrganize: false,
+        });
+      } else {
+        alert('Submission failed.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred.');
+    }
   };
 
   return (
@@ -91,7 +117,7 @@ const EventRequestForm: React.FC = () => {
           Fill out the details below to request approval for a new event.
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', color: '#65558f' }}>
           <label htmlFor="eventName" style={labelStyle}>
             Event Name *
           </label>
@@ -174,7 +200,7 @@ const EventRequestForm: React.FC = () => {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem', color: '#000' }}>
           <input
             type="checkbox"
             id="helpOrganize"
@@ -206,6 +232,7 @@ const inputStyle = {
   border: '1px solid #ccc',
   borderRadius: '0.75rem',
   backgroundColor: '#fafafa',
+  color: '#000',
   transition: 'border-color 0.2s',
 };
 
