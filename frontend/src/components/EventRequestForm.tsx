@@ -1,6 +1,8 @@
 'use client';
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 
+const toISO = (value: string) => new Date(value).toISOString();
+
 const eventTypes = [
   { id: 1, name: 'Service' },
   { id: 2, name: 'Social' },
@@ -44,18 +46,42 @@ const EventRequestForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Submitted Data:', formData);
-    alert('Your event request was successfully submitted!');
-    setFormData({
-      eventName: '',
-      typeID: '',
-      description: '',
-      address: '',
-      date: '',
-      helpOrganize: false,
-    });
+  
+    const payload = {
+      eventName: formData.eventName,
+      typeID: parseInt(formData.typeID),
+      description: formData.description,
+      address: formData.address,
+      beginTime: toISO(formData.date),
+      requestorHelp: formData.helpOrganize,
+    };
+  
+    try {
+      const response = await fetch('https://localhost:5000/api/Church/Events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+  
+      if (response.ok) {
+        alert('Your event request was successfully submitted!');
+        setFormData({
+          eventName: '',
+          typeID: '',
+          description: '',
+          address: '',
+          date: '',
+          helpOrganize: false,
+        });
+      } else {
+        alert('Submission failed.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred.');
+    }
   };
 
   return (
