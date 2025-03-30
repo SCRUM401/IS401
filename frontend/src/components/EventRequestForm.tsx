@@ -91,7 +91,7 @@ const EventRequestForm: React.FC = () => {
           Fill out the details below to request approval for a new event.
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', color: '#65558f' }}>
           <label htmlFor="eventName" style={labelStyle}>
             Event Name *
           </label>
@@ -174,7 +174,7 @@ const EventRequestForm: React.FC = () => {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem', color: '#000' }}>
           <input
             type="checkbox"
             id="helpOrganize"
@@ -206,6 +206,7 @@ const inputStyle = {
   border: '1px solid #ccc',
   borderRadius: '0.75rem',
   backgroundColor: '#fafafa',
+  color: '#000',
   transition: 'border-color 0.2s',
 };
 
