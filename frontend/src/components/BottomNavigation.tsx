@@ -15,7 +15,7 @@ const BottomNavigation: React.FC = () => {
   const navItems: NavItem[] = [
     {
       name: 'Home',
-      path: '/',
+      path: '/home',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

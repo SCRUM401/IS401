@@ -1,5 +1,5 @@
 // import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Calendar from './pages/Calendar';
 import EventForm from './pages/EventForm';
@@ -13,16 +13,17 @@ import EventPage from './pages/EventPage';
 
 function App() {
   return (
-    <BrowserRouter>
+<BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Navigate to="/Login" replace />} />
+          <Route path="home" element={<Home />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="eventform" element={<EventForm />} />
           <Route path="eventlist" element={<EventList />} />
           <Route path="*" element={<NoPage404 />} />
-          <Route path="Login" element={<Login1 />}></Route>
-          <Route path="Login2" element={<Login2 />}></Route>
+          <Route path="Login" element={<Login1 />} /> 
+          <Route path="Login2" element={<Login2 />} />
           <Route path="eventpage" element={<EventPage />} />
         </Route>
       </Routes>

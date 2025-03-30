@@ -10,7 +10,7 @@ const SignInForm2: React.FC = () => {
     e.preventDefault();
     // Handle form submission logic here
     console.log('Verification Successful');
-    navigate('/'); // Home route (since it's the index in App.tsx)
+    navigate('/home'); // Home route (since it's the index in App.tsx)
   };
 
   return (
