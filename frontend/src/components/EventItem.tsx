@@ -6,6 +6,7 @@ interface EventItemProps {
   title: string;
   time: string;
   location: string;
+  description?: string;
   styleClasses: {
     container: string;
     dateContainer: string;
@@ -14,6 +15,7 @@ interface EventItemProps {
     locationClass: string;
     detailsClass: string;
   };
+  onMoreDetails?: () => void; // 👈 ADD THIS
 }
 
 const EventItem: React.FC<EventItemProps> = ({
@@ -21,18 +23,24 @@ const EventItem: React.FC<EventItemProps> = ({
   title,
   time,
   location,
+  description,
   styleClasses,
+  onMoreDetails, // 👈 ADD THIS
 }) => {
   return (
     <article className={styleClasses.container}>
       <div className={styleClasses.dateContainer}>{date}</div>
       <div className={styleClasses.contentContainer}>
         <h3 className={styleClasses.titleClass}>
-          <span>{title}-</span>
+          <span>{title} - </span>
           <span className={styles.span}>{time}</span>
         </h3>
         <p className={styleClasses.locationClass}>{location}</p>
-        <a href="#" className={styleClasses.detailsClass}>
+        <a
+          onClick={onMoreDetails}
+          className={styleClasses.detailsClass}
+          style={{ cursor: 'pointer' }}
+        >
           More Details...
         </a>
       </div>

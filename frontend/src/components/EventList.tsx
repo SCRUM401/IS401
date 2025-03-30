@@ -105,24 +105,6 @@ const EventList: React.FC = () => {
                 />
               ))
             )}
-
-            <h2>Your RSVP'd Events</h2>
-            {/* Display RSVP'd events */}
-            {rsvpedEvents.length > 0 ? (
-              <div className={styles.rsvpSection}>
-                {rsvpedEvents.map((event) => (
-                  <ActivityItem
-                    key={event.EventID}
-                    event={event}
-                    handleRSVP={handleRSVP}
-                    handleCancel={handleCancel}
-                    rsvped={true} // Mark as RSVP'd
-                  />
-                ))}
-              </div>
-            ) : (
-              <p>No RSVP'd events yet.</p>
-            )}
           </main>
           <BottomNavigation />
         </div>
