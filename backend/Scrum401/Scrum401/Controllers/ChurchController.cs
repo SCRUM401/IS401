@@ -20,8 +20,25 @@ namespace Scrum401.Controllers
         [HttpGet("Events")]
         public ActionResult<IEnumerable<Event>> GetProjects()
         {
-            var events = _YSAContext.Events.ToList();
-            return Ok(events);
+           // var events = _YSAContext.Events.ToList();
+           // return Ok(events);
+            
+           var events = _YSAContext.Events.ToList();
+
+           foreach (var ev in events)
+           {
+               // Merge Year, Month, and Day with the existing time from BeginTime and EndTime
+
+               // Extract time from BeginTime (hours, minutes, seconds)
+               var beginTime = ev.BeginTime;
+               var endTime = ev.EndTime;
+
+               // Create new DateTime using the Year, Month, Day, and the time part from BeginTime and EndTime
+               ev.BeginTime = new DateTime(ev.Year, ev.Month, ev.Day, beginTime.Hour, beginTime.Minute, beginTime.Second);
+               ev.EndTime = new DateTime(ev.Year, ev.Month, ev.Day, endTime.Hour, endTime.Minute, endTime.Second);
+           }
+
+           return Ok(events);
         }
         
         [HttpPost("Events")]
