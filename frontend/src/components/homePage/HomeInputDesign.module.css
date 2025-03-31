@@ -5,8 +5,8 @@
 }
 
 .content {
-  margin-top: 20px;
-  padding: 0 30px;
+  margin-top: 5px;
+  padding: 0 5px;
 }
 
 @media (width<=991px) {
@@ -182,17 +182,19 @@
 
 .headerRow {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: center; /* This centers the title */
+  align-items: center; /* This centers the items vertically */
+  position: relative; /* Enables absolute positioning for logo */
+  width: 100%;
 }
 
 .logo {
+  position: absolute; /* This takes the logo out of the normal flow */
+  left: 1rem; /* Adjusts the logo's position from the left edge */
+  top: 1rem; /* Adjusts the logo's position from the top edge */
   width: 40px;
   height: 40px;
   object-fit: contain;
-  vertical-align: left;
 }
 
 .title {
@@ -200,4 +202,6 @@
   font-weight: 700;
   color: #213547;
   margin: 0;
+  text-align: center; /* This ensures the title stays centered */
 }
+
