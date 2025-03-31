@@ -50,6 +50,7 @@
   padding: 0.5rem;
 }
 
+
 /* Style for days with events - modified for rounded squares */
 .has-events {
   background-color: #e9d5ff !important;
@@ -64,6 +65,7 @@
   justify-content: center;
   align-items: center;
 }
+
 
 /* Remove the default red outline on focus for all calendar tiles */
 .responsive-calendar .react-calendar__tile:focus {
@@ -85,6 +87,38 @@
 .responsive-calendar .react-calendar__tile--now {
   background-color: #f3e8ff !important;
   border-radius: 0.25rem !important;
+}
+
+
+
+/* Improve the visibility of month navigation and arrows */
+.react-calendar__navigation {
+  background-color: #6947a3; /* Purple background for the header */
+  color: white;
+  padding: 0.75rem 0;
+  text-align: center;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.react-calendar__navigation button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.react-calendar__navigation button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.react-calendar__month-view__weekdays {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6947a3;
 }
 
 /* Events section */
@@ -187,4 +221,7 @@
   .event-description {
     font-size: 0.875rem;
   }
+  
 }
+
+
