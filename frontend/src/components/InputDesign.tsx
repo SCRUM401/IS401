@@ -2,7 +2,7 @@
 import React, { useState, FormEvent } from 'react';
 import styles from './InputDesign.module.css';
 import EventRequestForm from './EventRequestForm';
-import BottomNavigation from './BottomNavigation';
+// import BottomNavigation from './BottomNavigation';
 
 function InputDesign() {
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ function InputDesign() {
         />
       </main>
 
-      <BottomNavigation />
+      {/* <BottomNavigation /> */}
     </div>
   );
 }
